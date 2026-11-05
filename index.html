@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemini Çeviri Atölyesi — Vintage & Bohem Makine Çevirisi</title>
+  
+  <!-- Bohem & Vintage Tipografi: Cormorant Garamond, Cinzel, Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Arka Plan Bohem Parşömen & Kozmik Desen Katmanları -->
+  <div class="vintage-bg-decorations" aria-hidden="true">
+    <div class="ambient-glow glow-terracotta"></div>
+    <div class="ambient-glow glow-amber"></div>
+    <div class="ambient-glow glow-sage"></div>
+    
+    <!-- Bohem Güneş ve Ay İllüstrasyonları -->
+    <svg class="bg-celestial celestial-top-left" viewBox="0 0 160 160" fill="none">
+      <circle cx="80" cy="80" r="50" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+      <circle cx="80" cy="80" r="32" stroke="currentColor" stroke-width="1.2"/>
+      <path d="M80 18v16M80 126v16M18 80h16M126 80h16M36 36l12 12M112 112l12 12M36 124l12-12M112 48l12-12" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="80" cy="80" r="8" fill="currentColor" fill-opacity="0.3"/>
+    </svg>
+
+    <svg class="bg-celestial celestial-bottom-right" viewBox="0 0 180 180" fill="none">
+      <path d="M90 25 C130 25 160 60 160 100 C160 140 125 170 85 165 C130 145 135 75 90 25 Z" fill="currentColor" fill-opacity="0.12" stroke="currentColor" stroke-width="1.2"/>
+      <circle cx="50" cy="60" r="3" fill="currentColor"/>
+      <circle cx="65" cy="40" r="1.5" fill="currentColor"/>
+      <circle cx="35" cy="80" r="2" fill="currentColor"/>
+      <circle cx="120" cy="130" r="2" fill="currentColor"/>
+    </svg>
+
+    <!-- Botanik Bohem Dallar -->
+    <svg class="bg-botanical botanical-left" viewBox="0 0 100 240" fill="none">
+      <path d="M15 230 C20 160 50 90 85 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M38 175 C55 165 60 145 50 135 C42 145 35 160 38 175 Z" fill="currentColor" fill-opacity="0.25"/>
+      <path d="M48 130 C30 120 28 95 38 88 C45 98 48 115 48 130 Z" fill="currentColor" fill-opacity="0.25"/>
+      <path d="M65 85 C80 75 82 55 72 48 C65 58 62 72 65 85 Z" fill="currentColor" fill-opacity="0.25"/>
+    </svg>
+
+    <svg class="bg-botanical botanical-right" viewBox="0 0 100 240" fill="none">
+      <path d="M85 230 C80 160 50 90 15 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M62 175 C45 165 40 145 50 135 C58 145 65 160 62 175 Z" fill="currentColor" fill-opacity="0.25"/>
+      <path d="M52 130 C70 120 72 95 62 88 C55 98 52 115 52 130 Z" fill="currentColor" fill-opacity="0.25"/>
+      <path d="M35 85 C20 75 18 55 28 48 C35 58 38 72 35 85 Z" fill="currentColor" fill-opacity="0.25"/>
+    </svg>
+  </div>
+
+  <!-- Üst Bilgi / Başlık (Vintage Header) -->
+  <header class="app-header">
+    <div class="header-container">
+      
+      <div class="brand">
+        <div class="brand-seal">
+          <span class="seal-inner">✦</span>
+        </div>
+        <div class="brand-text">
+          <div class="brand-kicker">MÂKİNE ÇEVİRİSİ ATÖLYESİ</div>
+          <h1 class="brand-title">Gemini Çeviri</h1>
+          <div class="brand-sub">Bohem Edisyonu • Level 3</div>
+        </div>
+      </div>
+
+      <!-- Durum Mührü -->
+      <div class="vintage-stamp" id="apiStatusBadge">
+        <span class="stamp-dot status-dot"></span>
+        <span class="stamp-text status-text">Mühürleniyor...</span>
+      </div>
+
+    </div>
+    
+    <!-- Vintage Çift Bordür Süsü -->
+    <div class="header-filigree-line">
+      <span class="filigree-gem">❖</span>
+    </div>
+  </header>
+
+  <!-- Ana İçerik -->
+  <main class="app-main">
+    <div class="container">
+
+      <!-- API Key Uyarı Parşömeni -->
+      <div id="apiKeyNotice" class="parchment-notice hidden">
+        <div class="notice-seal">📜</div>
+        <div class="notice-content">
+          <h4>Gemini API Anahtarı Bekleniyor</h4>
+          <p>Çeviri atölyesini harekete geçirmek için kök dizindeki <code>.env</code> kütüğüne <strong>GEMINI_API_KEY</strong> bilginizi kaydedin ve sunucuyu yeniden başlatın.</p>
+        </div>
+      </div>
+
+      <!-- Ayar Konsolu: Diller, Alan ve Üslup (Vintage Masası) -->
+      <section class="vintage-panel controls-panel">
+        
+        <!-- Köşe Pirinç Süsleri -->
+        <span class="corner-flourish corner-tl"></span>
+        <span class="corner-flourish corner-tr"></span>
+        <span class="corner-flourish corner-bl"></span>
+        <span class="corner-flourish corner-br"></span>
+
+        <!-- Dil Seçimi ve Pusula Takas Butonu -->
+        <div class="lang-selector-group">
+          
+          <div class="vintage-field">
+            <label for="sourceLangSelect" class="vintage-label">
+              <span class="ornament">❧</span> Kaynak Dil
+            </label>
+            <div class="select-container">
+              <select id="sourceLangSelect">
+                <option value="en" selected>İngilizce — English</option>
+                <option value="tr">Türkçe — Turkish</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Pirinç Pusula Şeklinde Takas Butonu -->
+          <div class="swap-wrapper">
+            <button id="swapLangsBtn" class="vintage-swap-btn" title="Dilleri ve Metinleri Değiştir" aria-label="Dilleri Değiştir">
+              <svg class="swap-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="12" r="9" stroke-dasharray="2 3"></circle>
+                <path d="m15 4 4 4-4 4"></path>
+                <path d="M19 8H6"></path>
+                <path d="m9 20-4-4 4-4"></path>
+                <path d="M5 16h13"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="vintage-field">
+            <label for="targetLangSelect" class="vintage-label">
+              <span class="ornament">❧</span> Hedef Dil
+            </label>
+            <div class="select-container">
+              <select id="targetLangSelect">
+                <option value="tr" selected>Türkçe — Turkish</option>
+                <option value="en">İngilizce — English</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Alan (Domain) ve Üslup (Tone) Kartuşları -->
+        <div class="tuning-group">
+          
+          <div class="vintage-field">
+            <label for="domainSelect" class="vintage-label">
+              <span class="icon-boho">🏷️</span> Çeviri Alanı (Domain)
+            </label>
+            <div class="select-container">
+              <select id="domainSelect">
+                <option value="genel" selected>Genel (Klasik Standart Dil)</option>
+                <option value="hukuk">Hukuk (Mevzuat & Sözleşmeler)</option>
+                <option value="tip">Tıp (Klinik & Medikal Terminoloji)</option>
+                <option value="teknik">Teknik (Yazılım, Kod & Mühendislik)</option>
+                <option value="edebi">Edebi (Roman, Sanat & Şiirsel Doku)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="vintage-field">
+            <label for="toneSelect" class="vintage-label">
+              <span class="icon-boho">🎭</span> Anlatım Üslubu (Tone)
+            </label>
+            <div class="select-container">
+              <select id="toneSelect">
+                <option value="resmi" selected>Resmi (Saygılı, Vakur & Kurumsal)</option>
+                <option value="gundelik">Gündelik (Samimi, Bohem & Doğal)</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- Terimce (Glossary) — Deri Ciltli Defter Paneli -->
+      <section class="glossary-section vintage-panel">
+        <span class="corner-flourish corner-tl"></span>
+        <span class="corner-flourish corner-tr"></span>
+        <span class="corner-flourish corner-bl"></span>
+        <span class="corner-flourish corner-br"></span>
+
+        <button id="glossaryToggleBtn" class="glossary-toggle-btn" aria-expanded="false">
+          <span class="quill-icon">🪶</span>
+          <div class="toggle-text-block">
+            <span class="toggle-title">Özel Terimce (Glossary Defteri)</span>
+            <span class="toggle-desc">Modele zorunlu tutulacak özel sözlük kuralları</span>
+          </div>
+          <span id="glossaryCountBadge" class="vintage-badge hidden">0 kural</span>
+          <svg class="chevron-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+
+        <div id="glossaryContent" class="glossary-content collapsed">
+          <div class="glossary-inner-parchment">
+            <p class="glossary-hint">
+              <span>📜 Kural:</span> Her satıra bir terim çifti yazın: <code>kaynak terim = hedef terim</code>. Model çevirisinde bu terimlere harfiyen uyacaktır.
+            </p>
+            <textarea 
+              id="glossaryInput" 
+              rows="3" 
+              placeholder="pipeline = veri akış hattı&#10;machine learning = makine öğrenimi&#10;celestial = göksel"
+              spellcheck="false"
+            ></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Çeviri Çalışma Masası (Parşömen Kartları) -->
+      <section class="translation-grid">
+        
+        <!-- Kaynak Metin Parşömeni -->
+        <div class="editor-card source-card vintage-panel">
+          <span class="corner-flourish corner-tl"></span>
+          <span class="corner-flourish corner-tr"></span>
+          <span class="corner-flourish corner-bl"></span>
+          <span class="corner-flourish corner-br"></span>
+
+          <div class="card-header">
+            <div class="header-title-box">
+              <span class="quill-mini">✍️</span>
+              <span class="card-title" id="sourceCardTitle">İngilizce</span>
+            </div>
+            <div class="card-actions">
+              <button id="clearSourceBtn" class="vintage-text-btn" title="Kutuyu Temizle">
+                Temizle
+              </button>
+            </div>
+          </div>
+          
+          <div class="textarea-wrapper">
+            <textarea 
+              id="sourceText" 
+              placeholder="Çevrilecek metni buraya yazın veya yapıştırın..." 
+              spellcheck="false"
+            ></textarea>
+          </div>
+
+          <div class="card-footer">
+            <span class="char-count" id="sourceCharCount">0 karakter</span>
+            <span class="shortcut-hint"><kbd>Ctrl</kbd> + <kbd>Enter</kbd> ile Çevir</span>
+          </div>
+        </div>
+
+        <!-- Hedef Metin (Çeviri) Parşömeni -->
+        <div class="editor-card target-card vintage-panel">
+          <span class="corner-flourish corner-tl"></span>
+          <span class="corner-flourish corner-tr"></span>
+          <span class="corner-flourish corner-bl"></span>
+          <span class="corner-flourish corner-br"></span>
+
+          <div class="card-header">
+            <div class="header-title-box">
+              <span class="quill-mini">📜</span>
+              <span class="card-title" id="targetCardTitle">Türkçe</span>
+            </div>
+            <div class="card-actions">
+              <button id="copyBtn" class="vintage-stamp-btn copy-btn" title="Çeviriyi Panoya Kopyala" disabled>
+                <svg class="stamp-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                  <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
+                <span id="copyBtnText">Kopyala</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="textarea-wrapper">
+            <!-- Bohem Büyülü Yükleme Katmanı -->
+            <div id="loadingOverlay" class="loading-overlay hidden">
+              <div class="vintage-spinner-box">
+                <div class="spinner-sun">
+                  <span>☼</span>
+                </div>
+                <p class="loading-text">Gemini Metni Dokuyor...</p>
+                <span class="loading-sub">Bohem & Vintage Üslup İle İşleniyor</span>
+              </div>
+            </div>
+
+            <textarea 
+              id="targetText" 
+              placeholder="İncelikle işlenmiş çeviri burada parlayacak..." 
+              readonly
+              spellcheck="false"
+            ></textarea>
+          </div>
+
+          <div class="card-footer">
+            <span class="char-count" id="targetCharCount">0 karakter</span>
+            <span class="model-tag" id="metaInfo">Yalnızca Çeviri Çıktısı</span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Çevir Mührü Butonu -->
+      <div class="action-bar">
+        <button id="translateBtn" class="vintage-hero-btn">
+          <span class="hero-border-glow"></span>
+          <span class="btn-spinner hidden" id="btnSpinner"></span>
+          <span class="btn-celestial">☀</span>
+          <span class="btn-text">Metni Çevir</span>
+          <span class="btn-celestial-right">✦</span>
+        </button>
+      </div>
+
+      <!-- Hata Parşömeni (Sorun anında açılır) -->
+      <section id="errorCard" class="error-parchment hidden" role="alert">
+        <span class="corner-flourish corner-tl"></span>
+        <span class="corner-flourish corner-tr"></span>
+        
+        <div class="error-header">
+          <div class="error-seal">⚠️</div>
+          <div class="error-title-area">
+            <h3 id="errorTitle">Çeviri Kesintiye Uğradı</h3>
+            <p id="errorMessage" class="error-desc"></p>
+          </div>
+          <button id="dismissErrorBtn" class="dismiss-stamp" aria-label="Bildirimi Kapat">✕</button>
+        </div>
+        
+        <div class="error-solution-box">
+          <span class="solution-heading">💡 Ne Yapmalısınız?</span>
+          <p id="errorSolution" class="solution-text"></p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Bohem Parşömen Toast Bildirimi -->
+  <div id="toast" class="vintage-toast hidden">
+    <span class="toast-seal">💮</span>
+    <span class="toast-msg">Metin panoya kopyalandı!</span>
+  </div>
+
+  <!-- Zarif Bohem Altlık (Footer) -->
+  <footer class="app-footer">
+    <div class="footer-filigree">❖ ──── ✦ ──── ❖</div>
+    <p class="footer-title">Gemini Makine Çevirisi • Bohem & Vintage Koleksiyonu</p>
+    <p class="footer-sub">Doğal dokular, altın parşömen, terracotta & koyu espresso tonları</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
